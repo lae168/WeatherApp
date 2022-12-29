@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/weather_nav_graph"
+    app:startDestination="@id/current_weather_fragment">
+
+    <fragment
+
+        android:id="@+id/current_weather_fragment"
+        android:name="CurrentWeatherFragment"
+        android:label="CurrentWeather"/>
+
+    <fragment
+        android:id="@+id/forecast_weather_fragment"
+        android:name="com.example.weatherapp.fragments.ForecastWeatherFragment"
+        android:label="ForecastWeather" />
+
+</navigation>
