@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.weatherapp.R
 import com.example.weatherapp.data.Forecastday
 import kotlinx.android.synthetic.main.item_forecast_preview.view.*
@@ -45,14 +44,16 @@ class WeatherAdapter : RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() 
     override fun onBindViewHolder(holder: WeatherViewHolder, position: Int) {
         val weather = differ.currentList[position]
         holder.itemView.apply {
-            Glide.with(this).load(weather.day.condition.icon).into(ivWeatherIcon)
+//            Glide.with(this).load(weather.day.condition.icon).into(ivWeatherIcon)
             tvHumidity.text = "Humidity-" + weather.day.avghumidity.toString()
             tvDate.text = "Date-" + weather.date
-            tvTemp.text = "Temp-(" + weather.day.avgtemp_c.toString()+"C)"
+            tvTemp.text = "Temp-(" + weather.day.avgtemp_c.toString() + "C)"
             tvUv.text = "UV-" + weather.day.uv.toString()
-            tvWindSpeed.text="Wind-"+weather.day.maxwind_kph+"kph"
-        }}
-        override fun getItemCount(): Int {
-            return differ.currentList.size
+            tvWindSpeed.text = "Wind-" + weather.day.maxwind_kph + "kph"
+
         }
     }
+    override fun getItemCount(): Int {
+            return differ.currentList.size
+        }
+}

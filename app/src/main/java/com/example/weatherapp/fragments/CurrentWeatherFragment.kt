@@ -21,6 +21,7 @@ class CurrentWeatherFragment() : Fragment(R.layout.fragment_current_weather) {
             when(response){
                 is Resource.Success ->{
                         response.data?.let { currentResponse ->
+                        imgCurrent.setImageResource(R.drawable.weather)
                         city.text = currentResponse.location.country.toString()
                         coordinates.text = "Lon("+currentResponse.location.lon.toString()+") ,Lat("+
                                 currentResponse.location.lat.toString()+")"
@@ -31,8 +32,7 @@ class CurrentWeatherFragment() : Fragment(R.layout.fragment_current_weather) {
                         humidity.text = currentResponse.current.humidity.toString()
                         wind.text = currentResponse.current.wind_kph.toString()+"kph"
                         degree.text =currentResponse.current.wind_degree.toString()+"°"
-
-                    }
+                        }
                 }
                 is Error ->{
                     response.message?.let { message ->

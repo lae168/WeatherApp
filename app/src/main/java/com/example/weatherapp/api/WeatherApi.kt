@@ -18,7 +18,7 @@ interface WeatherApi {
     suspend fun getForecastWeather(
         @Query("q") location : String = "Canada",
         @Query("key")  apiKey: String = API_KEY,
-        @Query("days") days : String,
+        @Query("days") days : String = "14"
     ) : Response<ForecastWeatherResponse>
 
 

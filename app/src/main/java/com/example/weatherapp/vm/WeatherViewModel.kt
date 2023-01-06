@@ -21,12 +21,12 @@ import java.io.IOException
 class WeatherViewModel(app: Application, val weatherRepository: WeatherRepository) :
     AndroidViewModel(app) {
 
-    val forecastWeather: MutableLiveData<Resource<com.example.weatherapp.data.ForecastWeatherResponse>> = MutableLiveData()
+    val forecastWeather: MutableLiveData<Resource<ForecastWeatherResponse>> = MutableLiveData()
 
-    var forecastWeatherResponse: com.example.weatherapp.data.ForecastWeatherResponse? = null
+    var forecastWeatherResponse: ForecastWeatherResponse? = null
     var currentWeatherResponse: ForecastWeatherResponse? = null
 
-    val currentWeather: MutableLiveData<Resource<com.example.weatherapp.data.ForecastWeatherResponse>> = MutableLiveData()
+    val currentWeather: MutableLiveData<Resource<ForecastWeatherResponse>> = MutableLiveData()
 
     fun getForecastWeather(location: String, apikey: String, days: String) = viewModelScope.launch {
         safeForecastWeatherCall(location, apikey, days)
@@ -43,9 +43,9 @@ class WeatherViewModel(app: Application, val weatherRepository: WeatherRepositor
     }
 
     private fun handleForecastWeatherResponse(
-        response: Response<com.example.weatherapp.data.ForecastWeatherResponse>
+        response: Response<ForecastWeatherResponse>
     )
-            : Resource<com.example.weatherapp.data.ForecastWeatherResponse> {
+            : Resource<ForecastWeatherResponse> {
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
 
@@ -83,9 +83,9 @@ class WeatherViewModel(app: Application, val weatherRepository: WeatherRepositor
         }
     }
     private fun handleCurrentWeatherResponse(
-        response: Response<com.example.weatherapp.data.ForecastWeatherResponse>
+        response: Response<ForecastWeatherResponse>
     )
-            : Resource<com.example.weatherapp.data.ForecastWeatherResponse> {
+            : Resource<ForecastWeatherResponse> {
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
                 if (currentWeatherResponse == null) {

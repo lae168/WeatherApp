@@ -22,6 +22,18 @@ class ForecastWeatherFragment : Fragment(R.layout.fragment_forecast_weather) {
         viewModel = (activity as MainActivity).viewModel
         setUpRecyclerView()
 
+//        weatherAdapter.setOnItemClickListener {
+//            Log.d("TAG", "onViewCreated: $it")
+//            val bundle = Bundle().apply {
+//                putSerializable("forecastday", it)
+//            }
+//            findNavController().navigate(
+//                R.id.action_forecast_weather_fragment_to_detailWeatherFragment,
+//                bundle
+//            )
+//
+//        }
+
         viewModel.forecastWeather.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is Resource.Success -> {
